@@ -1,73 +1,49 @@
 # Sai Rajiv Nagula
 
-**Senior Generative AI Engineer | LLM, RAG & Agentic AI Systems**
-Chicago, IL · Open to Senior AI Engineer roles across the US (remote first)
+Senior Generative AI Engineer at Mayo Clinic, Chicago.
 
-I build production GenAI systems, not demos. Eight years across data science, machine learning, and data engineering, currently Senior Generative AI Engineer at Mayo Clinic, previously Data Scientist at Google (via Wipro). My work is RAG and agentic systems that run under real constraints: HIPAA compliance, measured evaluation, cost control, and answers that can be traced back to a source.
+I build LLM systems that run in production: retrieval, agents, and the evaluation work that keeps both honest. Eight years across machine learning, data science, and data engineering. At Mayo Clinic my work is RAG over clinical knowledge and agentic workflows on AWS Bedrock and SageMaker, built under HIPAA constraints: measured evaluation, cost control, and answers that trace back to a source.
 
-Selected results from my recent work:
+Day to day: Python, FastAPI, LangGraph, PostgreSQL with pgvector, AWS Bedrock and SageMaker, Docker.
 
-- Reduced LLM inference cost by 35% at Mayo Clinic by routing models on SageMaker with GPU auto-scaling
-- Accelerated LLM training workflows by 40% with distributed training on SageMaker and PySpark on EMR
-- Built HIPAA-compliant RAG over clinical knowledge with hybrid retrieval, reranking, and citation checking to reduce hallucinations
+## Projects
 
-## Flagship projects
+- [rag-knowledge-platform](https://github.com/Sairajiv-13/rag-knowledge-platform): multi-tenant RAG service with hybrid retrieval, verified citations, and per-tenant quotas. Measured retrieval eval and benchmarks in the repo. [Live demo](https://rag-knowledge-platform-rnsc.onrender.com/docs), container image on GHCR.
+- [enterprise-ai-ops-agent](https://github.com/Sairajiv-13/enterprise-ai-ops-agent): a LangGraph state machine that turns email, tickets, chat messages, and PDFs into finished work: tickets opened, replies drafted, reports written. 159 tests, an eval harness, and an ADR for every real decision.
+- [campaign-studio](https://github.com/Sairajiv-13/campaign-studio): generates campaign variants per segment and scores them against human judgment instead of model self-grading. Ranking accuracy is a CI gate.
+- [pr-review-agent](https://github.com/Sairajiv-13/pr-review-agent): an AI pull request reviewer as a CLI and a GitHub Action. Its own review is posted on [the demo pull request](https://github.com/Sairajiv-13/pr-review-agent/pull/1).
+- [clinical-trials-mcp-server](https://github.com/Sairajiv-13/clinical-trials-mcp-server): an MCP server over the ClinicalTrials.gov API. Eligibility is decided only where the criteria are deterministic; the rest is returned for the caller to judge.
 
-| Project | What it does | Proof in the repo |
-|---|---|---|
-| [rag-knowledge-platform](https://github.com/Sairajiv-13/rag-knowledge-platform) | Multi-tenant RAG service with hybrid retrieval (pgvector + full-text), grounded answers with verified citations, per-tenant isolation and quotas, and a documented API. | 90 tests, 81% coverage, measured hybrid retrieval eval (hit@1 0.553 vs 0.474 dense), benchmarks, container image on GHCR |
-| [enterprise-ai-ops-agent](https://github.com/Sairajiv-13/enterprise-ai-ops-agent) | LangGraph state machine that turns emails, tickets, Slack messages, and PDFs into finished work: classification, extraction, Jira tickets, drafted replies, and manager reports. FastAPI, Redis queue, JWT auth. | 159 tests, 86% coverage, mypy strict, eval harness, ADRs, Docker, runs with no external accounts |
-| [campaign-studio](https://github.com/Sairajiv-13/campaign-studio) | Generates email and SMS campaign variants per segment, then scores and ranks them on brand voice, clarity, CTA, and deliverability, measured against human judgment instead of model self-grading. | 77 tests, 94% coverage, 18-pair scoring validation, cost accounting, guardrails |
-| [pr-review-agent](https://github.com/Sairajiv-13/pr-review-agent) | AI pull request reviewer that runs as a CLI and a GitHub Action. Findings land on exact diff lines, secret checks never print matched values, and dry run is the default. | 36 tests, 89% coverage, and the action's own review posted on [its demo PR](https://github.com/Sairajiv-13/pr-review-agent/pull/1) |
-| [clinical-trials-mcp-server](https://github.com/Sairajiv-13/clinical-trials-mcp-server) | MCP server over the public ClinicalTrials.gov API: trial search, eligibility checks, and recruiting sites for any MCP client. | 73 tests, 92% coverage, container image on GHCR, eligibility decided only where it is deterministic |
+Applied ML and data projects, each live:
 
-## Mini projects
-
-Smaller builds, same standard: tested, released, and running live.
-
-| Project | What it does | Live |
-|---|---|---|
-| [hospital-readmission-api](https://github.com/Sairajiv-13/hospital-readmission-api) | Readmission risk API: three models compared on the UCI Diabetes dataset with a patient-grouped split, a tuned decision threshold, and PSI drift checks, served by FastAPI. | [Live API](https://hospital-readmission-api-ec05.onrender.com/docs) |
-| [telco-churn-analysis](https://github.com/Sairajiv-13/telco-churn-analysis) | Churn analysis on the IBM Telco data: executed notebooks, a findings document with segment economics, and an app that scores a customer profile. | [Live app](https://telco-churn-analysis-t5rx.onrender.com) |
-| [recommendation-engine](https://github.com/Sairajiv-13/recommendation-engine) | Movie recommendations on MovieLens: popularity, item-item cosine, and SVD compared on the same holdout, served by FastAPI with a cold-start path. | [Live demo](https://recommendation-engine-a8e4.onrender.com) |
-
-Each README states plainly what is tested, what is built but unproven at scale, and what the numbers actually come from. That is deliberate.
+- [hospital-readmission-api](https://github.com/Sairajiv-13/hospital-readmission-api): readmission risk API on the UCI Diabetes dataset, patient-grouped split, tuned decision threshold, drift checks. [Live](https://hospital-readmission-api-ec05.onrender.com/docs)
+- [telco-churn-analysis](https://github.com/Sairajiv-13/telco-churn-analysis): churn analysis on the IBM Telco data with executed notebooks, a findings document, and a scoring app. [Live](https://telco-churn-analysis-t5rx.onrender.com)
+- [recommendation-engine](https://github.com/Sairajiv-13/recommendation-engine): three recommenders compared on the same MovieLens holdout, served with a cold-start path. [Live](https://recommendation-engine-a8e4.onrender.com)
 
 ## Selected design docs
 
-The decisions behind the projects above, written as ADRs with the rejected alternatives named. These are the documents I would bring to a design review:
+The decisions behind these projects, written as ADRs with the rejected alternatives named:
 
-- [LangGraph orchestration](https://github.com/Sairajiv-13/enterprise-ai-ops-agent/blob/main/docs/adr/0003-langgraph-orchestration.md): why the pipeline is an explicit state machine, not a free-form agent loop
+- [Tenant isolation](https://github.com/Sairajiv-13/rag-knowledge-platform/blob/main/docs/adr/0002-tenant-isolation.md): keeping one tenant's data out of another's answers
+- [Hybrid retrieval](https://github.com/Sairajiv-13/rag-knowledge-platform/blob/main/docs/adr/0003-hybrid-retrieval.md): why dense and keyword search run together, with the measurements
 - [Evaluation and quality gates](https://github.com/Sairajiv-13/enterprise-ai-ops-agent/blob/main/docs/adr/0009-evaluation-and-quality-gates.md): how non-deterministic output gets measured before it ships
 - [Idempotency strategy](https://github.com/Sairajiv-13/enterprise-ai-ops-agent/blob/main/docs/adr/0017-idempotency-strategy.md): making retries safe in a pipeline that takes real actions
-- [Tenant isolation](https://github.com/Sairajiv-13/rag-knowledge-platform/blob/main/docs/adr/0002-tenant-isolation.md): keeping one tenant's data out of another's answers
-- [Hybrid retrieval](https://github.com/Sairajiv-13/rag-knowledge-platform/blob/main/docs/adr/0003-hybrid-retrieval.md): why pgvector dense search and Postgres full-text run together, with a per-source score breakdown
-- [Prompt injection and output escaping](https://github.com/Sairajiv-13/campaign-studio/blob/main/docs/adr/010-prompt-injection-and-output-escaping.md): the guardrails around generated copy
 
 ## Open source
 
 - LangChain: root-caused a dropped evaluation config in the tracer callback chain, [issue #31802](https://github.com/langchain-ai/langchain/issues/31802), fix and regression tests in [PR #41251](https://github.com/langchain-ai/langchain/pull/41251)
-- FastMCP: verified error-handling taxonomy from the client side and proposed the documentation fix on [issue #5564](https://github.com/PrefectHQ/fastmcp/issues/5564)
-
-## Stack I work in
-
-- **GenAI / LLM:** OpenAI, Azure OpenAI, Anthropic Claude, AWS Bedrock, LangChain, LangGraph, LlamaIndex, Hugging Face, RAG and advanced RAG, fine-tuning (LoRA, QLoRA, PEFT), MCP / FastMCP
-- **ML / Data:** Python, PyTorch, TensorFlow, scikit-learn, Spark / PySpark, Kafka, Airflow, Snowflake, Databricks
-- **Platform:** AWS (SageMaker, Bedrock, OpenSearch, Lambda, Textract), Azure, GCP Vertex AI, Docker, Kubernetes, Terraform, MLflow
-- **APIs / Data stores:** FastAPI, PostgreSQL / pgvector, Redis, MongoDB, vector search and hybrid retrieval
-- **Observability:** Prometheus, Grafana, model monitoring, drift and latency tracking
+- FastMCP: verified the error-handling behavior from the client side and proposed the documentation fix on [issue #5564](https://github.com/PrefectHQ/fastmcp/issues/5564)
 
 ## How I build
 
 - Evaluation before claims: labeled eval sets, reproducible benchmarks, no invented metrics
 - Architecture decisions written down as ADRs, with the rejected alternatives named
 - Tests, typing, and CI as part of the project, not an afterthought
-- Honest limitations in every README
+- Limitations stated in every README, next to the claims they limit
 
 ## Background
 
-- Senior Generative AI Engineer, Mayo Clinic (2024 to present): Bedrock and SageMaker RAG, agentic workflows with Bedrock Agents and Step Functions, OCR and document intelligence, HIPAA-compliant PHI processing
-- Data Scientist, GenAI / ML, Google via Wipro (2021 to 2023): RAG and semantic search, BERT fine-tuning, Vertex AI and MLflow MLOps, BigQuery and Dataflow pipelines at multi-terabyte scale
+- Senior Generative AI Engineer, Mayo Clinic (2024 to present)
 - M.S. Information Systems, DePaul University (2025)
 - B.Tech Computer Science, Kakatiya University (2018)
 
@@ -75,4 +51,3 @@ The decisions behind the projects above, written as ADRs with the rejected alter
 
 - LinkedIn: https://www.linkedin.com/in/rajivn3/
 - Email: sairn3@gmail.com
-- GitHub: https://github.com/Sairajiv-13
