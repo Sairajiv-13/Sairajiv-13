@@ -16,7 +16,7 @@ Selected results from my recent work:
 | Project | What it does | Proof in the repo |
 |---|---|---|
 | [enterprise-ai-ops-agent](https://github.com/Sairajiv-13/enterprise-ai-ops-agent) | LangGraph state machine that turns emails, tickets, Slack messages, and PDFs into finished work: classification, extraction, Jira tickets, drafted replies, and manager reports. FastAPI, Redis queue, JWT auth. | 159 tests, 86% coverage, mypy strict, eval harness, ADRs, Docker, runs with no external accounts |
-| [rag-knowledge-platform](https://github.com/Sairajiv-13/rag-knowledge-platform) | Multi-tenant RAG service with hybrid retrieval (pgvector + full-text), grounded answers with verified citations, per-tenant isolation and quotas, and a live API. | 90 tests, 81% coverage, labeled retrieval eval set, benchmarks, Terraform, Terraform and an architecture diagram in the repo |
+| [rag-knowledge-platform](https://github.com/Sairajiv-13/rag-knowledge-platform) | Multi-tenant RAG service with hybrid retrieval (pgvector + full-text), grounded answers with verified citations, per-tenant isolation and quotas, and a documented API. | 90 tests, 81% coverage, labeled retrieval eval set, benchmarks, Terraform, and an architecture diagram in the repo |
 | [campaign-studio](https://github.com/Sairajiv-13/campaign-studio) | Generates email and SMS campaign variants per segment, then scores and ranks them on brand voice, clarity, CTA, and deliverability, measured against human judgment instead of model self-grading. | 77 tests, 94% coverage, 18-pair scoring validation, cost accounting, guardrails |
 
 Each README states plainly what is tested, what is built but unproven at scale, and what the numbers actually come from. That is deliberate.
