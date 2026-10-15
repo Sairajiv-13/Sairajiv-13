@@ -8,11 +8,13 @@ Day to day: Python, FastAPI, LangGraph, PostgreSQL with pgvector, AWS Bedrock an
 
 ## Projects
 
+The five main projects. Each is held to the same bar: green CI, a tagged release, measured results, and proof a reviewer can click.
+
 - [rag-knowledge-platform](https://github.com/Sairajiv-13/rag-knowledge-platform): multi-tenant RAG service with hybrid retrieval, verified citations, and per-tenant quotas. Measured retrieval eval and benchmarks in the repo. [Live demo](https://rag-knowledge-platform-rnsc.onrender.com/docs), container image on GHCR.
 - [enterprise-ai-ops-agent](https://github.com/Sairajiv-13/enterprise-ai-ops-agent): a LangGraph state machine that turns email, tickets, chat messages, and PDFs into finished work: tickets opened, replies drafted, reports written. 159 tests, an eval harness, and an ADR for every real decision.
-- [campaign-studio](https://github.com/Sairajiv-13/campaign-studio): generates campaign variants per segment and scores them against human judgment instead of model self-grading. Ranking accuracy is a CI gate.
 - [pr-review-agent](https://github.com/Sairajiv-13/pr-review-agent): an AI pull request reviewer as a CLI and a GitHub Action. Its own review is posted on [the demo pull request](https://github.com/Sairajiv-13/pr-review-agent/pull/1).
 - [clinical-trials-mcp-server](https://github.com/Sairajiv-13/clinical-trials-mcp-server): an MCP server over the ClinicalTrials.gov API. Eligibility is decided only where the criteria are deterministic; the rest is returned for the caller to judge.
+- [campaign-studio](https://github.com/Sairajiv-13/campaign-studio): generates campaign variants per segment and scores them against human judgment instead of model self-grading. Ranking accuracy is a CI gate.
 
 Applied ML and data projects, each live:
 
