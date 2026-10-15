@@ -21,6 +21,17 @@ Selected results from my recent work:
 
 Each README states plainly what is tested, what is built but unproven at scale, and what the numbers actually come from. That is deliberate.
 
+## Selected design docs
+
+The decisions behind the projects above, written as ADRs with the rejected alternatives named. These are the documents I would bring to a design review:
+
+- [LangGraph orchestration](https://github.com/Sairajiv-13/enterprise-ai-ops-agent/blob/main/docs/adr/0003-langgraph-orchestration.md): why the pipeline is an explicit state machine, not a free-form agent loop
+- [Evaluation and quality gates](https://github.com/Sairajiv-13/enterprise-ai-ops-agent/blob/main/docs/adr/0009-evaluation-and-quality-gates.md): how non-deterministic output gets measured before it ships
+- [Idempotency strategy](https://github.com/Sairajiv-13/enterprise-ai-ops-agent/blob/main/docs/adr/0017-idempotency-strategy.md): making retries safe in a pipeline that takes real actions
+- [Tenant isolation](https://github.com/Sairajiv-13/rag-knowledge-platform/blob/main/docs/adr/0002-tenant-isolation.md): keeping one tenant's data out of another's answers
+- [Hybrid retrieval](https://github.com/Sairajiv-13/rag-knowledge-platform/blob/main/docs/adr/0003-hybrid-retrieval.md): why pgvector dense search and Postgres full-text run together, with a per-source score breakdown
+- [Prompt injection and output escaping](https://github.com/Sairajiv-13/campaign-studio/blob/main/docs/adr/010-prompt-injection-and-output-escaping.md): the guardrails around generated copy
+
 ## Also here
 
 - [hipaa-patient-portal](https://github.com/Sairajiv-13/hipaa-patient-portal): Terraform AWS infrastructure mapped to HIPAA technical safeguards, with encrypted RDS, VPC isolation, KMS, and CloudTrail audit logging
