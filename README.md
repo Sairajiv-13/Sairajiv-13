@@ -15,9 +15,21 @@ Selected results from my recent work:
 
 | Project | What it does | Proof in the repo |
 |---|---|---|
+| [rag-knowledge-platform](https://github.com/Sairajiv-13/rag-knowledge-platform) | Multi-tenant RAG service with hybrid retrieval (pgvector + full-text), grounded answers with verified citations, per-tenant isolation and quotas, and a documented API. | 90 tests, 81% coverage, measured hybrid retrieval eval (hit@1 0.553 vs 0.474 dense), benchmarks, container image on GHCR |
 | [enterprise-ai-ops-agent](https://github.com/Sairajiv-13/enterprise-ai-ops-agent) | LangGraph state machine that turns emails, tickets, Slack messages, and PDFs into finished work: classification, extraction, Jira tickets, drafted replies, and manager reports. FastAPI, Redis queue, JWT auth. | 159 tests, 86% coverage, mypy strict, eval harness, ADRs, Docker, runs with no external accounts |
-| [rag-knowledge-platform](https://github.com/Sairajiv-13/rag-knowledge-platform) | Multi-tenant RAG service with hybrid retrieval (pgvector + full-text), grounded answers with verified citations, per-tenant isolation and quotas, and a documented API. | 90 tests, 81% coverage, labeled retrieval eval set, benchmarks, Terraform, and an architecture diagram in the repo |
 | [campaign-studio](https://github.com/Sairajiv-13/campaign-studio) | Generates email and SMS campaign variants per segment, then scores and ranks them on brand voice, clarity, CTA, and deliverability, measured against human judgment instead of model self-grading. | 77 tests, 94% coverage, 18-pair scoring validation, cost accounting, guardrails |
+| [pr-review-agent](https://github.com/Sairajiv-13/pr-review-agent) | AI pull request reviewer that runs as a CLI and a GitHub Action. Findings land on exact diff lines, secret checks never print matched values, and dry run is the default. | 36 tests, 89% coverage, and the action's own review posted on [its demo PR](https://github.com/Sairajiv-13/pr-review-agent/pull/1) |
+| [clinical-trials-mcp-server](https://github.com/Sairajiv-13/clinical-trials-mcp-server) | MCP server over the public ClinicalTrials.gov API: trial search, eligibility checks, and recruiting sites for any MCP client. | 73 tests, 92% coverage, container image on GHCR, eligibility decided only where it is deterministic |
+
+## Mini projects
+
+Smaller builds, same standard: tested, released, and running live.
+
+| Project | What it does | Live |
+|---|---|---|
+| [hospital-readmission-api](https://github.com/Sairajiv-13/hospital-readmission-api) | Readmission risk API: three models compared on the UCI Diabetes dataset with a patient-grouped split, a tuned decision threshold, and PSI drift checks, served by FastAPI. | [Live API](https://hospital-readmission-api-ec05.onrender.com/docs) |
+| [telco-churn-analysis](https://github.com/Sairajiv-13/telco-churn-analysis) | Churn analysis on the IBM Telco data: executed notebooks, a findings document with segment economics, and an app that scores a customer profile. | [Live app](https://telco-churn-analysis-t5rx.onrender.com) |
+| [recommendation-engine](https://github.com/Sairajiv-13/recommendation-engine) | Movie recommendations on MovieLens: popularity, item-item cosine, and SVD compared on the same holdout, served by FastAPI with a cold-start path. | [Live demo](https://recommendation-engine-a8e4.onrender.com) |
 
 Each README states plainly what is tested, what is built but unproven at scale, and what the numbers actually come from. That is deliberate.
 
@@ -32,9 +44,10 @@ The decisions behind the projects above, written as ADRs with the rejected alter
 - [Hybrid retrieval](https://github.com/Sairajiv-13/rag-knowledge-platform/blob/main/docs/adr/0003-hybrid-retrieval.md): why pgvector dense search and Postgres full-text run together, with a per-source score breakdown
 - [Prompt injection and output escaping](https://github.com/Sairajiv-13/campaign-studio/blob/main/docs/adr/010-prompt-injection-and-output-escaping.md): the guardrails around generated copy
 
-## Also here
+## Open source
 
-- [hipaa-patient-portal](https://github.com/Sairajiv-13/hipaa-patient-portal): Terraform AWS infrastructure mapped to HIPAA technical safeguards, with encrypted RDS, VPC isolation, KMS, and CloudTrail audit logging
+- LangChain: root-caused a dropped evaluation config in the tracer callback chain, [issue #31802](https://github.com/langchain-ai/langchain/issues/31802), fix and regression tests in [PR #41251](https://github.com/langchain-ai/langchain/pull/41251)
+- FastMCP: verified error-handling taxonomy from the client side and proposed the documentation fix on [issue #5564](https://github.com/PrefectHQ/fastmcp/issues/5564)
 
 ## Stack I work in
 
